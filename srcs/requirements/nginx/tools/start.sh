@@ -8,4 +8,3 @@ mv cert.crt /etc/nginx/
 mv cle.key /etc/nginx/
 
 service nginx restart
-bash

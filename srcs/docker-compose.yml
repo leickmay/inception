@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+    nginx:
+        build: ./requirements/nginx
+        networks:
+            - bonjour
+        ports:
+            - "443:443"
+
+    wordpress:
+        build: ./requirements/wordpress
+        networks:
+            - bonjour
+
+    mariadb:
+        build: ./requirements/mariadb
+        #depends on: wordpress
+        networks:
+            - bonjour
+
+networks:
+    bonjour:
+        name: pouic
+
