@@ -8,6 +8,3 @@ ADD ./conf ./
 ADD ./tools ./
 
 ENTRYPOINT sh start.sh
-
-EXPOSE 443
-

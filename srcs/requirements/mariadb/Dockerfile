@@ -6,8 +6,12 @@ RUN apt-get install mariadb-server -y
 ADD ./conf ./
 ADD ./tools ./
 
-ENV MYSQL_USER="user"
-ENV MYSQL_PWD="pass"
-ENV MYSQL_DB="wordpress"
+RUN cp 50-server.cnf etc/mysql/mariadb.conf.d
 
-ENTRYPOINT sh start.sh
+ARG SQL_NAME
+ARG SQL_USER
+ARG SQL_PASS
+ARG SQL_ROOTPASS
+RUN sh env.sh
+RUN service mysql start && mysql < createdb.sql
+CMD mysqld_safe
